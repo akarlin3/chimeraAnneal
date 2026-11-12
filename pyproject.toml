@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling>=1.18.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chimera-anneal"
+version = "1.0.0"
+description = "Coupled phase-oscillator chimera survival, graze-vs-absorption detection, Weibull aging hazard, and topology-dependent finite-size scaling"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Avery Karlin", email = "ak5232@columbia.edu"},
+]
+keywords = [
+    "chimera-states",
+    "coupled-oscillators",
+    "Sakaguchi-Kuramoto",
+    "Ott-Antonsen",
+    "survival-analysis",
+    "Weibull-hazard",
+    "finite-size-scaling",
+    "nonlinear-dynamics",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+fast = [
+    "numba>=0.58",
+]
+dev = [
+    "pytest>=7.4",
+    "build>=1.0",
+    "twine>=4.0",
+]
+
+[project.scripts]
+chimera-anneal = "chimera_anneal.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/akarlin3/chimeraAnneal"
+Repository = "https://github.com/akarlin3/chimeraAnneal"
+Issues = "https://github.com/akarlin3/chimeraAnneal/issues"
+Zenodo = "https://doi.org/10.5281/zenodo.20564867"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chimera_anneal"]
+artifacts = ["src/chimera_anneal/py.typed"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/src/chimera_anneal/py.typed",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+    "/CITATION.cff",
+    "/pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"

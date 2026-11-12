@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+title: "chimeraAnneal: Coupled-Oscillator Chimera Survival, Graze-vs-Absorption Detection, and Finite-Size Scaling"
+message: "If you use chimeraAnneal in your research, please cite the software package and the companion manuscript below."
+type: software
+authors:
+  - family-names: "Karlin"
+    given-names: "Avery"
+    email: "ak5232@columbia.edu"
+    orcid: "https://orcid.org/0000-0003-3848-6782"
+    affiliation: "AveryCorp Institute; Department of Applied Physics and Applied Mathematics, Columbia University; Department of Computer Science, University of Colorado Boulder"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20564867"
+    description: "Companion Zenodo archive for the Anneal chimera survival study"
+doi: "10.5281/zenodo.20564867"
+repository-code: "https://github.com/akarlin3/chimeraAnneal"
+url: "https://github.com/akarlin3/chimeraAnneal"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-12"
+keywords:
+  - chimera states
+  - Sakaguchi-Kuramoto oscillators
+  - Ott-Antonsen reduction
+  - Weibull survival analysis
+  - aging hazard
+  - finite-size scaling
+  - nonlocal ring oscillators
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Karlin"
+      given-names: "Avery"
+      email: "ak5232@columbia.edu"
+      orcid: "https://orcid.org/0000-0003-3848-6782"
+      affiliation: "Department of Applied Physics and Applied Mathematics, Columbia University; Department of Computer Science, University of Colorado Boulder"
+  title: "Chimera Collapse Ages: Topology-Dependent Finite-Size Scaling in Mean-Field and Ring Oscillator Systems"
+  journal: "Physical Review E"
+  publisher:
+    name: "American Physical Society"
+  year: 2026
+  doi: "10.5281/zenodo.20564867"
