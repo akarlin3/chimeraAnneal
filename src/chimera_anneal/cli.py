@@ -122,6 +122,13 @@ def _run_ring_ensemble(
 
 
 def _cmd_demo(args: argparse.Namespace) -> int:
+    if getattr(args, "json", False):
+        from .audit import run_audit
+
+        report = run_audit(seed=int(args.seed), mf_trials=max(int(args.trials), 4))
+        print(report.to_json())
+        return 0 if report.status != "HALT" else 1
+
     seed = int(args.seed)
     mf_sizes = [8, 16, 32]
     ring_sizes = [32, 48, 64]
@@ -192,6 +199,19 @@ def _cmd_demo(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_audit(args: argparse.Namespace) -> int:
+    from .audit import run_audit
+
+    report = run_audit(seed=int(args.seed))
+    if getattr(args, "json", False):
+        print(report.to_json())
+    else:
+        print(report.summary_line())
+        for k, v in report.metrics.items():
+            print(f"  {k}: {v}")
+    return 0 if report.status != "HALT" else 1
+
+
 def _cmd_benchmark(args: argparse.Namespace) -> int:
     n_sizes = [int(s.strip()) for s in args.n_sizes.split(",") if s.strip()]
     trials = int(args.trials)
@@ -260,7 +280,20 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_demo.add_argument("--seed", type=int, default=20260609, help="PCG64 master seed.")
     p_demo.add_argument("--trials", type=int, default=12, help="Trials per system size N.")
+    p_demo.add_argument(
+        "--json",
+        action="store_true",
+        help="Emit standardized AveryCorp AuditReport JSON diagnostic.",
+    )
     p_demo.set_defaults(func=_cmd_demo)
+
+    p_audit = sub.add_parser(
+        "audit",
+        help="Run Suite II chimera graze-vs-absorption & finite-size hazard diagnostic audit.",
+    )
+    p_audit.add_argument("--seed", type=int, default=42, help="PCG64 seed (default: 42).")
+    p_audit.add_argument("--json", action="store_true", help="Emit machine-readable AuditReport JSON.")
+    p_audit.set_defaults(func=_cmd_audit)
 
     p_bench = sub.add_parser(
         "benchmark",

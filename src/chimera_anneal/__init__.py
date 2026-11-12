@@ -1,6 +1,7 @@
 """chimeraAnneal: Coupled-oscillator chimera survival & finite-size scaling."""
 from __future__ import annotations
 
+from .audit import AuditReport, run_audit
 from .detection import (
     CollapseDetectionResult,
     detect_chimera_collapse,
@@ -31,6 +32,8 @@ __version__ = "1.0.0"
 
 __all__ = [
     "__version__",
+    "AuditReport",
+    "run_audit",
     "HAS_NUMBA",
     "make_pcg64_rng",
     "kemeth_curvature_g0",

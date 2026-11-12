@@ -14,6 +14,19 @@ All stochastic initializations and bootstrap estimators use strictly determinist
 
 ---
 
+## AveryCorp Scientific Suites Architecture
+
+`chimeraAnneal` is a core pillar of **Suite II** in the **AveryCorp Open Scientific Software Ecosystem**, sharing a standardized `AuditReport` diagnostic schema (`chimera-anneal audit --json` / `run_audit()`) across two non-overlapping suites:
+
+- **Suite I: Clinical Quantitative-MRI Trust Spine (`Diagnose -> Calibrate -> Benchmark`)**
+  - [`sextantIVIM`](https://github.com/akarlin3/sextantIVIM) (Stage 1: Identifiability & Railing Gate) -> [`conformalIVIM`](https://github.com/akarlin3/conformalIVIM) (Stage 2: Conformal UQ & Drift Gate) -> [`IVIMBench`](https://github.com/akarlin3/IVIMBench) (Stage 3: DRO Phantoms & Closed-Loop RT Benchmark).
+- **Suite II: Scientific Identifiability & Null-Audit Suite**
+  - [`weakSINDY`](https://github.com/akarlin3/weakSINDY): Weak-form fractional PDE/ODE identifiability & ensemble inclusion gate ·
+  - **[`chimeraAnneal`](https://github.com/akarlin3/chimeraAnneal) (*This Package*)**: Absorbing collapse vs. transient graze separation & finite-size hazard gate ·
+  - [`proteusMine`](https://github.com/akarlin3/proteusMine): Structure-first catalytic triad screening, `pLDDT` stratification & TOST non-superiority gate.
+
+---
+
 ## Mathematical Overview
 
 ### 1. Coupled-Oscillator Chimera Substrates (`chimera_anneal.substrates`)
